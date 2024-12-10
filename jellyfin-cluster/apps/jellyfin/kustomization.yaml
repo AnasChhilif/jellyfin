@@ -4,3 +4,4 @@ namespace: jellyfin
 resources:
   - namespace.yaml
   - release.yaml
+
