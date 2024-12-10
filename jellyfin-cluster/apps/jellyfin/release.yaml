@@ -1,0 +1,23 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: jellyfin
+  namespace: jellyfin
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./
+      sourceRef:
+        kind: GitRepository
+        name: jellyfin-helm
+        namespace: flux-system
+      interval: 1m
+  values:
+    persistence:
+      config:
+        enabled: false
+      media:
+        enabled: false
+      cache:
+        enabled: false
