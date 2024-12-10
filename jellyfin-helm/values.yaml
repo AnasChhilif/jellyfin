@@ -10,23 +10,12 @@ service:
 
 persistence:
   config:
-    enabled: true
-    storageClass: ""
+    enabled: false
     size: 1Gi
   media:
-    enabled: true
-    storageClass: ""
+    enabled: false
     size: 10Gi
   cache:
-    enabled: true
-    storageClass: ""
+    enabled: false
     size: 1Gi
-
-resources:
-  requests:
-    cpu: 100m
-    memory: 512Mi
-  limits:
-    cpu: 2000m
-    memory: 2Gi
 
