@@ -1,11 +1,10 @@
-apiVersion: source.toolkit.fluxcd.io/v1
+apiVersion: source.toolkit.fluxcd.io/v1beta2  # Changed from v1 to v1beta2
 kind: GitRepository
 metadata:
   name: jellyfin-helm
   namespace: flux-system
 spec:
   interval: 1m
-  url: https://github.com/anaschhilif/jellyfin
+  url: https://github.com/anaschhilif/jellyfin  # Replace with your repo URL
   ref:
     branch: master
-  path: jellyfin-helm
