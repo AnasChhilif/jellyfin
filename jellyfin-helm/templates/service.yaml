@@ -3,16 +3,15 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}
   labels:
-    {{- include "jellyfin.labels" . | nindent 4 }}
+    app: {{ .Release.Name }}
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
-      {{- if and (eq .Values.service.type "NodePort") .Values.service.nodePort }}
+      targetPort: 8096
+      {{- if eq .Values.service.type "NodePort" }}
       nodePort: {{ .Values.service.nodePort }}
       {{- end }}
   selector:
-    {{- include "jellyfin.selectorLabels" . | nindent 4 }}
+    app: {{ .Release.Name }}
+

@@ -3,24 +3,23 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}
   labels:
-    {{- include "jellyfin.labels" . | nindent 4 }}
+    app: {{ .Release.Name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      {{- include "jellyfin.selectorLabels" . | nindent 6 }}
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        {{- include "jellyfin.selectorLabels" . | nindent 8 }}
+        app: {{ .Release.Name }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
+        - name: {{ .Release.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: http
-              containerPort: 8096
+            - containerPort: 8096
               protocol: TCP
           volumeMounts:
             - name: config
@@ -29,8 +28,6 @@ spec:
               mountPath: /media
             - name: cache
               mountPath: /cache
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
       volumes:
         - name: config
           {{- if .Values.persistence.config.enabled }}
