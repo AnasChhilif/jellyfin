@@ -1,0 +1,32 @@
+image:
+  repository: jellyfin/jellyfin
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 8096
+  nodePort: 30096
+
+persistence:
+  config:
+    enabled: true
+    storageClass: ""
+    size: 1Gi
+  media:
+    enabled: true
+    storageClass: ""
+    size: 10Gi
+  cache:
+    enabled: true
+    storageClass: ""
+    size: 1Gi
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 512Mi
+  limits:
+    cpu: 2000m
+    memory: 2Gi
+

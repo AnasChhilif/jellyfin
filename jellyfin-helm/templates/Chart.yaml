@@ -1,0 +1,5 @@
+apiVersion: v2
+name: jellyfin
+description: A Helm chart for Jellyfin media server
+version: 0.1.0
+appVersion: "10.10.3"

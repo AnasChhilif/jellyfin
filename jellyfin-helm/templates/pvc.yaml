@@ -1,0 +1,49 @@
+{{- if .Values.persistence.config.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Release.Name }}-config
+  labels:
+    {{- include "jellyfin.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.persistence.config.storageClass }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.config.size }}
+{{- end }}
+
+{{- if .Values.persistence.media.enabled }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Release.Name }}-media
+  labels:
+    {{- include "jellyfin.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.persistence.media.storageClass }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.media.size }}
+{{- end }}
+
+{{- if .Values.persistence.cache.enabled }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Release.Name }}-cache
+  labels:
+    {{- include "jellyfin.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.persistence.cache.storageClass }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.cache.size }}
+{{- end }}
