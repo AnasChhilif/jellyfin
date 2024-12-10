@@ -7,7 +7,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: ./jellyfin-helm  # Path to your Helm chart directory
+      chart: jellyfin-helm  # Just the directory name, no './'
       sourceRef:
         kind: GitRepository
         name: jellyfin-helm
@@ -21,4 +21,3 @@ spec:
         enabled: false
       cache:
         enabled: false
-
