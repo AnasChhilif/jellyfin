@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: budgeteer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: budgeteer
+  template:
+    metadata:
+      labels:
+        app: budgeteer
+    spec:
+      containers:
+        - name: budgeteer
+          image: anaschhilif/budgeteer:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres:5432/budgeteerdb
+            - name: SPRING_DATASOURCE_USERNAME
+              value: budgeteeruser
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: budgeteerpassword
+            - name: LOKI_URL
+              value: http://loki:3100/loki/api/v1/push
