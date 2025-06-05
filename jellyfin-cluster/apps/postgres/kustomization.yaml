@@ -2,6 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: jellyfin
 resources:
-  - postgres/postgres-deployment.yaml
-  - postgres/postgres-service.yaml
-  - postgres/postgres-pvc.yaml
+  - postgres-deployment.yaml
+  - postgres-service.yaml
+  - postgres-pvc.yaml
