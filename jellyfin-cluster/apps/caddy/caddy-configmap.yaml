@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: caddy-config
+  namespace: jellyfin
+data:
+  Caddyfile: |
+    jellyfin.local {
+        reverse_proxy jellyfin:8096
+    }

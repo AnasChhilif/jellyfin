@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caddy
+  namespace: jellyfin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: caddy
+  template:
+    metadata:
+      labels:
+        app: caddy
+    spec:
+      containers:
+      - name: caddy
+        image: caddy:2-alpine
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        volumeMounts:
+        - name: caddy-config
+          mountPath: /etc/caddy
+          readOnly: true
+        - name: caddy-data
+          mountPath: /data
+        - name: caddy-config-cache
+          mountPath: /config
+      volumes:
+      - name: caddy-config
+        configMap:
+          name: caddy-config
+      - name: caddy-data
+        emptyDir: {}
+      - name: caddy-config-cache
+        emptyDir: {}
