@@ -5,6 +5,6 @@ metadata:
   namespace: jellyfin
 data:
   Caddyfile: |
-    jellyfin.local {
-        reverse_proxy jellyfin:8096
+    localhost:80 {
+        reverse_proxy jellyfin:30096
     }
