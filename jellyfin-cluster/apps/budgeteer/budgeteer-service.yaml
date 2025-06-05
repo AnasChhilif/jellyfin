@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: budgeteer
+  namespace: jellyfin
+spec:
+  type: NodePort  # Use LoadBalancer/Ingress in production
+  selector:
+    app: budgeteer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30000  # Optional static port (30000-32767)
