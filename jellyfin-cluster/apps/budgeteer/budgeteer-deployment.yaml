@@ -27,5 +27,7 @@ spec:
               value: budgeteerpassword
             - name: LOKI_URL
               value: http://loki:3100/loki/api/v1/push
-            - name: MANAGEMENT_METRICS_BINDERS_PROCESSOR_ENABLED
+            - name: MANAGEMENT_ENDPOINTS_ENABLED_BY_DEFAULT
+              value: "false"
+            - name: MANAGEMENT_ENDPOINT_METRICS_ENABLED
               value: "false"
