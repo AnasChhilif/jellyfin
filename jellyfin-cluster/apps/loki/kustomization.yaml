@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - loki/loki-configmap.yaml
-  - loki/loki-deployment.yaml
-  - loki/loki-service.yaml
-  - loki/loki-pvc.yaml
+  - loki-configmap.yaml
+  - loki-deployment.yaml
+  - loki-service.yaml
+  - loki-pvc.yaml
