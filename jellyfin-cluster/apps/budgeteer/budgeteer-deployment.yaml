@@ -28,4 +28,4 @@ spec:
             - name: SPRING_DATASOURCE_PASSWORD
               value: budgeteerpassword
             - name: LOKI_URL
-              value: http://loki:3100/loki/api/v1/push
+              value: http://loki.jellyfin.svc.cluster.local
