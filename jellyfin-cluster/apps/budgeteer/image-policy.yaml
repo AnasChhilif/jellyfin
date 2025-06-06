@@ -1,0 +1,12 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: budgeteer-policy
+  namespace: jellyfin
+spec:
+  interval: 5m
+  imageRepositoryRef:
+    name: budgeteer
+  policy:
+    exact:
+      tag: "latest"

@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: budgeteer
   namespace: jellyfin
+  annotations:
+    image.fluxcd.io/tag.budgeteer: latest
 spec:
   replicas: 1
   selector:
