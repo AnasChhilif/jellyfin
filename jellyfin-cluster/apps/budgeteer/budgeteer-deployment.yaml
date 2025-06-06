@@ -22,10 +22,10 @@ spec:
             - containerPort: 8080
           env:
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://postgres:5432/budgeteerdb
+              value: jdbc:postgresql://postgres.jellyfin.svc.cluster.local:5432/budgeteerdb
             - name: SPRING_DATASOURCE_USERNAME
               value: budgeteeruser
             - name: SPRING_DATASOURCE_PASSWORD
               value: budgeteerpassword
             - name: LOKI_URL
-              value: http://loki.jellyfin.svc.cluster.local
+              value: http://loki.jellyfin.svc.cluster.local:3100/loki/api/v1/push
