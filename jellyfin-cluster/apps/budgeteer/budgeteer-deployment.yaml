@@ -30,4 +30,6 @@ spec:
             - name: LOKI_URL
               value: http://loki.jellyfin.svc.cluster.local:3100/loki/api/v1/push
             - name: JAVA_TOOL_OPTIONS
-              value: "-XX:+UseContainerSupport -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+              value: "-XX:+UseContainerSupport -XX:+UnlockExperimentalVMOptions"
+            - name: MANAGEMENT_METRICS_BINDERS_PROCESSOR_ENABLED
+              value: "false"
