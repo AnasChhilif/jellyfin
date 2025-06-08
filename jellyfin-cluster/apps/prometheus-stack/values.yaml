@@ -1,4 +1,3 @@
-# Enable core components
 prometheus:
   enabled: true
   prometheusSpec:
