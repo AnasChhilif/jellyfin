@@ -10,7 +10,7 @@ data:
     }
     
     jellyfin.chhilif.com {
-      reverse_proxy jellyfin.jellyfin.svc.cluster.local:8096
+      reverse_proxy jellyfin:8096
       encode gzip
       
       header {
@@ -21,12 +21,12 @@ data:
     }
     
     devapi.budgeteer.chhilif.com {
-      reverse_proxy budgeteer.jellyfin.svc.cluster.local:8080
+      reverse_proxy budgeteer:8080
       encode gzip
     }
     
     grafana.budgeteer.chhilif.com {
-      reverse_proxy prometheus-stack-grafana.jellyfin.svc.cluster.local:80
+      reverse_proxy prometheus-stack-grafana:80
       encode gzip
       
       header {
@@ -37,17 +37,17 @@ data:
     }
     
     loki.chhilif.com {
-      reverse_proxy loki.jellyfin.svc.cluster.local:3100
+      reverse_proxy loki:3100
       encode gzip
     }
     
     prometheus.chhilif.com {
-      reverse_proxy prometheus-stack-kube-prom-prometheus.jellyfin.svc.cluster.local:9090
+      reverse_proxy prometheus-stack-kube-prom-prometheus:9090
       encode gzip
     }
     
     alertmanager.chhilif.com {
-      reverse_proxy prometheus-stack-kube-prom-alertmanager.jellyfin.svc.cluster.local:9093
+      reverse_proxy prometheus-stack-kube-prom-alertmanager:9093
       encode gzip
     }
     
