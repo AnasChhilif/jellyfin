@@ -13,10 +13,6 @@ spec:
       labels:
         app: loki
     spec:
-      securityContext:
-        fsGroup: 10001
-        runAsUser: 10001
-        runAsGroup: 10001
       containers:
         - name: loki
           image: grafana/loki:3.0.0
@@ -29,6 +25,8 @@ spec:
               mountPath: /etc/loki
             - name: loki-storage
               mountPath: /loki
+            - name: tmp-storage
+              mountPath: /tmp
           securityContext:
             runAsUser: 10001
             runAsGroup: 10001
@@ -40,3 +38,5 @@ spec:
         - name: loki-storage
           persistentVolumeClaim:
             claimName: loki-pvc
+        - name: tmp-storage
+          emptyDir: {}
