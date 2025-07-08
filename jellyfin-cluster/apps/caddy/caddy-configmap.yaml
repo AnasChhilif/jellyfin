@@ -5,6 +5,56 @@ metadata:
   namespace: jellyfin
 data:
   Caddyfile: |
-    127.0.0.1:80, [::1]:80 {
+    {
+      email chhilifanas@gmail.com
+    }
+    
+    jellyfin.chhilif.com {
       reverse_proxy jellyfin.jellyfin.svc.cluster.local:8096
+      encode gzip
+      
+      header {
+        X-Forwarded-Proto {scheme}
+        X-Forwarded-For {remote_host}
+        X-Real-IP {remote_host}
+      }
+    }
+    
+    devapi.budgeteer.chhilif.com {
+      reverse_proxy budgeteer.jellyfin.svc.cluster.local:8080
+      encode gzip
+    }
+    
+    grafana.chhilif.com {
+      reverse_proxy prometheus-stack-grafana.jellyfin.svc.cluster.local:80
+      encode gzip
+      
+      header {
+        X-Forwarded-Proto {scheme}
+        X-Forwarded-For {remote_host}
+        X-Real-IP {remote_host}
+      }
+    }
+    
+    loki.chhilif.com {
+      reverse_proxy loki.jellyfin.svc.cluster.local:3100
+      encode gzip
+    }
+    
+    prometheus.chhilif.com {
+      reverse_proxy prometheus-stack-kube-prom-prometheus.jellyfin.svc.cluster.local:9090
+      encode gzip
+    }
+    
+    alertmanager.chhilif.com {
+      reverse_proxy prometheus-stack-kube-prom-alertmanager.jellyfin.svc.cluster.local:9093
+      encode gzip
+    }
+    
+    127.0.0.1:80, [::1]:80 {
+      respond "Please use domain names to access services"
+    }
+    
+    chhilif.com {
+      redir https://jellyfin.chhilif.com{uri}
     }
