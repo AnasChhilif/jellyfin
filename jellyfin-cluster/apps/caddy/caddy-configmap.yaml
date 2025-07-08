@@ -6,7 +6,7 @@ metadata:
 data:
   Caddyfile: |
     {
-      email admin@chhilif.com
+      email chhilifanas@gmail.com
     }
     
     jellyfin.chhilif.com {
