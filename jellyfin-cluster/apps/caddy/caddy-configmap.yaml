@@ -6,7 +6,7 @@ metadata:
 data:
   Caddyfile: |
     {
-      email chhilifanas@gmail.com
+      email admin@chhilif.com
     }
     
     jellyfin.chhilif.com {
@@ -25,7 +25,7 @@ data:
       encode gzip
     }
     
-    grafana.chhilif.com {
+    grafana.budgeteer.chhilif.com {
       reverse_proxy prometheus-stack-grafana.jellyfin.svc.cluster.local:80
       encode gzip
       
