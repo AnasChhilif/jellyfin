@@ -15,45 +15,24 @@ spec:
     spec:
       securityContext:
         fsGroup: 10001
-        runAsGroup: 10001
-        runAsNonRoot: true
         runAsUser: 10001
-      initContainers:
-        - name: init-loki
-          image: busybox:1.35
-          command:
-            - sh
-            - -c
-            - |
-              mkdir -p /loki/chunks /loki/rules
-              chown -R 10001:10001 /loki
-          volumeMounts:
-            - name: loki-storage
-              mountPath: /loki
-          securityContext:
-            runAsUser: 0
+        runAsGroup: 10001
       containers:
         - name: loki
-          image: grafana/loki:latest
+          image: grafana/loki:3.0.0
           args:
             - "-config.file=/etc/loki/loki-config.yml"
           ports:
             - containerPort: 3100
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-              - ALL
-            readOnlyRootFilesystem: true
-            runAsNonRoot: true
-            runAsUser: 10001
           volumeMounts:
             - name: loki-config
               mountPath: /etc/loki
             - name: loki-storage
               mountPath: /loki
-            - name: tmp
-              mountPath: /tmp
+          securityContext:
+            runAsUser: 10001
+            runAsGroup: 10001
+            allowPrivilegeEscalation: false
       volumes:
         - name: loki-config
           configMap:
@@ -61,5 +40,3 @@ spec:
         - name: loki-storage
           persistentVolumeClaim:
             claimName: loki-pvc
-        - name: tmp
-          emptyDir: {}
