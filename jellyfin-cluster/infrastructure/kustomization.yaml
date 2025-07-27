@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - sources/jellyfin-helm.yaml
   - storage/manual-pvs.yaml
+  - metallb
