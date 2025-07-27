@@ -8,3 +8,4 @@ resources:
   - loki
   - postgres
   - prometheus-stack
+  - ../infrastructure

@@ -6,4 +6,3 @@ resources:
   - capacitor-kustomize.yaml
   - capacitor-oci.yaml
   - ../apps.yaml
-  - ../infrastructure.yaml
