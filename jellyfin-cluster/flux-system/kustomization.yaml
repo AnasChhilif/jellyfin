@@ -5,3 +5,4 @@ resources:
 - capacitor-kustomize.yaml
 - gotk-components.yaml
 - gotk-sync.yaml
+- ../infrastructure-config.yaml 
