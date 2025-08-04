@@ -18,6 +18,11 @@ spec:
     controller:
       image:
         tag: v0.13.12
+      env:
+        - name: KUBERNETES_SERVICE_HOST
+          value: "10.0.0.99"
+        - name: KUBERNETES_SERVICE_PORT
+          value: "6443"
     speaker:
       image:
         tag: v0.13.12
