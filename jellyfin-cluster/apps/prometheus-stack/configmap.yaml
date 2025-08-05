@@ -64,17 +64,6 @@ data:
       persistence:
         enabled: true
         size: 10Gi
-      ingress:
-        enabled: true
-        hosts:
-          - grafana.budgeteer.chhilif.com
-        annotations:
-          kubernetes.io/ingress.class: nginx
-          cert-manager.io/cluster-issuer: letsencrypt-prod
-        tls:
-          - secretName: grafana-tls
-            hosts:
-              - grafana.budgeteer.chhilif.com
 
     alertmanager:
       enabled: true

@@ -4,3 +4,4 @@ resources:
   - sources/jellyfin-helm.yaml
   - storage/manual-pvs.yaml
   - metallb
+  - ingress-nginx
